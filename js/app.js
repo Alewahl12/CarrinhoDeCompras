@@ -15,4 +15,15 @@ function adicionar(){
     selecionarTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${valorTotal}</span>`;
 
 }
+
+function limpar(){
+    let selecionarTotal = document.getElementById('valor-total');
+    valorTotal = 0;
+    selecionarTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${valorTotal}</span>`;
+    let carrinho = document.getElementById('lista-produtos');
+    let listaProdutos = carrinho.querySelector('.carrinho__produtos__produto');
+    listaProdutos.innerHTML = " ";
+}
+
+
 let valorTotal = 0;
