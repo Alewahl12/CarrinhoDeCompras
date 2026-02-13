@@ -7,10 +7,12 @@ function adicionar(){
     let listaProdutos = carrinho.querySelector('.carrinho__produtos__produto');
     let selecionarTotal = document.getElementById('valor-total');
 
-    listaProdutos.innerHTML = `<span class="texto-azul">${quantidadeSelecionada}x</span> ${nomeProduto} <span class="texto-azul">R$${precoProduto}</span>`
-    
-    let valorTotal = parseFloat(precoProduto) * quantidadeSelecionada;
 
-    selecionarTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${valorTotal}</span>`
+    listaProdutos.innerHTML += `<br><span class="texto-azul">${quantidadeSelecionada}x</span> ${nomeProduto} <span class="texto-azul">R$${precoProduto}</span></br>`;
+    
+    valorTotal += parseFloat(precoProduto) * quantidadeSelecionada;
+
+    selecionarTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${valorTotal}</span>`;
 
 }
+let valorTotal = 0;
