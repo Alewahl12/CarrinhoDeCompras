@@ -2,8 +2,14 @@ function adicionar(){
     //Obter valores do produto (nome, preço, quantidade);
     let produtoSelecionado = document.getElementById('produto').value;
     let nomeProduto = produtoSelecionado.split(' - ')[0];
-    let precoProduto = produtoSelecionado.split('R$')[1];
-    let quantidadeSelecionada = document.getElementById('quantidade').value;
+    let precoProduto = parseFloat(produtoSelecionado.split('R$')[1]);
+    let quantidadeSelecionada = parseInt(document.getElementById('quantidade').value);
+
+    //Validar se a quantidade desejada foi informada e se é maior que 0
+    if (quantidadeSelecionada <= 0 || isNaN(quantidadeSelecionada)){
+        alert('Quantidade Inválida!');
+        return;
+    }
 
     //Adicionar item no carrinho e calcular subtotal
     let carrinho = document.getElementById('lista-produtos');
@@ -11,7 +17,7 @@ function adicionar(){
 
     //Calcular valor total dos itens adicionados e exibir
     let selecionarTotal = document.getElementById('valor-total');
-    valorTotal += parseFloat(precoProduto) * quantidadeSelecionada;
+    valorTotal += (precoProduto) * quantidadeSelecionada;
     selecionarTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${valorTotal}</span>`;
 
     //Limpar valor do campo quantidade ao clicar em adicionar
@@ -25,6 +31,7 @@ function limpar(){
     let selecionarTotal = document.getElementById('valor-total');
     let carrinho = document.getElementById('lista-produtos');
 
+    //Limpar campos
     quantidadeSelecionadaTexto.value = '';
     valorTotal = 0;
     selecionarTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${valorTotal}</span>`;
